@@ -6,29 +6,25 @@ const api = {
 }
 
 class Search extends Component {
-    state = { 
-        query: ''
-     }
-
      //get api response
      search = evt => {
         if (evt.key === 'Enter'){
-            fetch(`${api.base}weather?q=${this.state.query}&units=metric&APPID=${api.key}`)
+            fetch(`${api.base}weather?q=${this.props.query}&units=metric&APPID=${api.key}`)
             .then(res => res.json())
             .then(result => {
                 // setWeather(result); PASS IN PROPS??
-                this.setState({query: ''});
+                // this.setState({query: ''});
                 console.log(result);
             });
         }
      }
 
-     //update query variable when there is a change in search bar input
-     handleSearchChange (e) {
-         this.setState({query: e.target.value});
+     handleChange(e) {
+         this.props.onChange(e.target.value);
      }
 
     render() { 
+        const { onChange, query } = this.props;
         return (
             //search box
             <div className='search-box'>
@@ -36,8 +32,8 @@ class Search extends Component {
                 type='text'
                 className='search-bar'
                 placeholder='Search...'
-                onChange={(e) => {this.handleSearchChange(e)}}
-                value={this.state.query}
+                onChange={(e) => {this.handleChange(e)}}
+                value={this.props.query}
                 onKeyPress={this.search}
                 />
             </div>

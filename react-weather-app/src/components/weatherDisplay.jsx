@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 
 class WeatherDisplay extends Component {
-    state = { 
-     } 
 
      //get weather result
      //...

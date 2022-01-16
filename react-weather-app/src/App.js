@@ -5,11 +5,29 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+
+  state = {
+    query: '',
+    weather: {}
+  }
+
+  constructor () {
+    super();
+  }
+
+  //update query when there is a change in search bar input
+  handleChange = (value) => {
+    this.setState({query: value});
+  }
+
   render() {
     return (
       <React.Fragment>
         <main>
-          <Search/>
+          <Search 
+          query={this.state.query}
+          onChange={this.handleChange}
+          />
           <WeatherDisplay />
         </main>
       </React.Fragment>

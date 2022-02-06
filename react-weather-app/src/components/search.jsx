@@ -12,19 +12,20 @@ class Search extends Component {
             fetch(`${api.base}weather?q=${this.props.query}&units=metric&APPID=${api.key}`)
             .then(res => res.json())
             .then(result => {
-                // setWeather(result); PASS IN PROPS??
+                this.props.onSearch(result);
                 // this.setState({query: ''});
                 console.log(result);
             });
         }
      }
 
+     //update query when there is a change in search bar input
      handleChange(e) {
          this.props.onChange(e.target.value);
      }
 
     render() { 
-        const { onChange, query } = this.props;
+        // const { onChange, query } = this.props;
         return (
             //search box
             <div className='search-box'>

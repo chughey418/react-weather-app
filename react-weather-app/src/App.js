@@ -8,12 +8,7 @@ class App extends Component {
 
   state = {
     query: '',
-    weather: {
-      name: '',
-      sys: {},
-      main: {},
-      weather: [],
-    }
+    weather: {},
   }
 
   constructor () {
@@ -27,12 +22,7 @@ class App extends Component {
 
   //update weather when location is entered
   handleSearch = (result) => {
-    this.setState({weather: {
-      name: result.name, 
-      sys: result.sys,
-      main: result.main,
-      weather: result.weather
-    }});
+    this.setState({weather: result});
 }
 
   render() {
@@ -44,9 +34,11 @@ class App extends Component {
           onChange={this.handleChange}
           onSearch={this.handleSearch}
           />
-          <WeatherDisplay 
-          weather={this.state.weather}
-          />
+          {(typeof this.state.weather.main != "undefined") ? (
+            <WeatherDisplay 
+            weather={this.state.weather}
+            />
+          ) : ('') }
         </main>
       </React.Fragment>
     );

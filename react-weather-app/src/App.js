@@ -28,18 +28,20 @@ class App extends Component {
   render() {
     return (
       <React.Fragment>
-        <main>
-          <Search 
-          query={this.state.query}
-          onChange={this.handleChange}
-          onSearch={this.handleSearch}
-          />
-          {(typeof this.state.weather.main != "undefined") ? (
-            <WeatherDisplay 
-            weather={this.state.weather}
+        <div className={(typeof this.state.weather.main != "undefined") ? ((this.state.weather.main.temp > 16) ? 'app warm' : 'app') : 'app'}>
+          <main>
+            <Search 
+            query={this.state.query}
+            onChange={this.handleChange}
+            onSearch={this.handleSearch}
             />
-          ) : ('') }
-        </main>
+            {(typeof this.state.weather.main != "undefined") ? (
+              <WeatherDisplay 
+              weather={this.state.weather}
+              />
+            ) : ('') }
+          </main>
+        </div>
       </React.Fragment>
     );
   }

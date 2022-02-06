@@ -16,7 +16,6 @@ class WeatherDisplay extends Component {
      }
 
     render() { 
-        // const { weather } = this.props;
         return (
             //weather display (location, date, temp, weather descriptor)
             <div>

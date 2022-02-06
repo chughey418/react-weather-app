@@ -25,7 +25,6 @@ class Search extends Component {
      }
 
     render() { 
-        // const { onChange, query } = this.props;
         return (
             //search box
             <div className='search-box'>
